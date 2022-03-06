@@ -4,15 +4,13 @@ import requests
 
 def ekstraksi_data():
     try:
-        content = requests.get('https:bmkg.go.id')
+        content = requests.get('https: mkg.go.id')
     except Exception:
         return None
 
     if content.status_code == 200:
-        print(content.text)
-
-        # soup = bs4.beautifulsoup(content)
-        # print(soup.prettify())
+        soup = bs4.beautifulsoup(content.text)
+        print(soup.prettify())
 
         hasil = dict()
         hasil['tanggal'] = '06 Maret 2022'
@@ -31,12 +29,12 @@ def tampilkan_data(result):
         print('Tidak bisa menemukan data gempa terkini')
         return
 
-    print('Gempa Terakhir berdasarkan BMKG')
-    print(f"tanggal {result['tanggal']}")
-    print(f"waktu {result['waktu']}")
-    print(f"magnitudo {result['magnitudo']}")
-    print(f"kedalaman {result['kedalaman']}")
-    print(f"lokasi: LS={result['lokasi']['LS']}, BT={result['lokasi']['BT']}")
-    print(f"potensi gempa {result['potensi gempa']}")
+        print('Gempa Terakhir berdasarkan BMKG')
+        print(f"tanggal {result['tanggal']}")
+        print(f"waktu {result['waktu']}")
+        print(f"magnitudo {result['magnitudo']}")
+        print(f"kedalaman {result['kedalaman']}")
+        print(f"lokasi: LS={result['lokasi']['LS']}, BT={result['lokasi']['BT']}")
+        print(f"potensi gempa {result['potensi gempa']}")
 
 print('Ini adalah package gempa terkini')

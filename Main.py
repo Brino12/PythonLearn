@@ -6,9 +6,10 @@
 67 km Tenggara TAHUNA-KEP.SANGIHE-SULUT
 tidak berpotensi TSUNAMI
 """
-import deteksi_gempa
+
+from deteksi_gempa import ekstraksi_data, tampilkan_data
 
 if __name__ == '__main__':
     print('Aplikasi Utama')
-    result = deteksi_gempa.ekstraksi_data()
-    deteksi_gempa.tampilkan_data(result)
+    result = ekstraksi_data()
+    tampilkan_data(result)
