@@ -10,13 +10,33 @@ def ekstraksi_data():
 
     if content.status_code == 200:
         soup = BeautifulSoup(content.text, 'html.parser')
-        tanggal = soup.find('span', {'class': 'waktu'})
+
+        result = soup.find('span', {'class': 'waktu'})
+        result = result.text.split(', ')
+        tanggal = result[0]
+        waktu = result[1]
+
+        result = soup.find('div', {'class': 'col-md-6 col-xs-6 gempabumi-detail no-padding'})
+        result = result.findChildren('Li')
+        i = 0
+        magnitudo = None
+        ls = None
+        bt = None
+
+        for res in result:
+            print(i, res)
+            if i = 1:
+                magnitudo = res.text
+            elif i == 2:
+                lokasi =
+
+
 
 
         hasil = dict()
         hasil['tanggal'] = tanggal.text #'06 Maret 2022'
-        hasil['waktu'] = '05:40:28 WIB'
-        hasil['magnitudo'] = '5.0'
+        hasil['waktu'] = waktu #'05:40:28 WIB'
+        hasil['magnitudo'] = magnitudo #'5.0'
         hasil['kedalaman'] = '43 km'
         hasil['lokasi'] = {'LU': 3.55, 'BT': 126.10}
         hasil['potensi gempa'] = 'Tidak Berpotensi Tsunami'

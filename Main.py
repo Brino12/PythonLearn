@@ -12,5 +12,5 @@ import deteksi_gempa
 if __name__ == '__main__':
     print('Aplikasi Utama')
     result = deteksi_gempa.ekstraksi_data()
-    deteksi_gempa.ekstraksi_data()
+    deteksi_gempa.tampilkan_data(result)
 
