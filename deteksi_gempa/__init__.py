@@ -1,20 +1,36 @@
 import bs4
+import requests
+
 
 def ekstraksi_data():
+    try:
+        content = requests.get('https:bmkg.go.id')
+    except Exception:
+        return None
 
-    bs4.beautifulsoup("<p>some<b>bad<i>HTML")
+    if content.status_code == 200:
+        print(content.text)
 
-    hasil = dict()
-    hasil['tanggal'] = '06 Maret 2022'
-    hasil['waktu'] = '05:40:28 WIB'
-    hasil['magnitudo'] = '5.0'
-    hasil['kedalaman'] = '43 km'
-    hasil['lokasi'] = {'LU': 3.55, 'BT': 126.10}
-    hasil['potensi gempa'] = 'Tidak Berpotensi Tsunami'
+        # soup = bs4.beautifulsoup(content)
+        # print(soup.prettify())
 
-    return hasil
+        hasil = dict()
+        hasil['tanggal'] = '06 Maret 2022'
+        hasil['waktu'] = '05:40:28 WIB'
+        hasil['magnitudo'] = '5.0'
+        hasil['kedalaman'] = '43 km'
+        hasil['lokasi'] = {'LU': 3.55, 'BT': 126.10}
+        hasil['potensi gempa'] = 'Tidak Berpotensi Tsunami'
+        return hasil
+    else:
+        return None
 
 def tampilkan_data(result):
+
+    if result is None:
+        print('Tidak bisa menemukan data gempa terkini')
+        return
+
     print('Gempa Terakhir berdasarkan BMKG')
     print(f"tanggal {result['tanggal']}")
     print(f"waktu {result['waktu']}")
