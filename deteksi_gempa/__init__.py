@@ -1,19 +1,20 @@
-import bs4
-import requests
 
+import requests
+from bs4 import BeautifulSoup
 
 def ekstraksi_data():
     try:
-        content = requests.get('https: mkg.go.id')
+        content = requests.get('https://bmkg.go.id')
     except Exception:
         return None
 
     if content.status_code == 200:
-        soup = bs4.beautifulsoup(content.text)
-        print(soup.prettify())
+        soup = BeautifulSoup(content.text, 'html.parser')
+        tanggal = soup.find('span', {'class': 'waktu'})
+
 
         hasil = dict()
-        hasil['tanggal'] = '06 Maret 2022'
+        hasil['tanggal'] = tanggal.text #'06 Maret 2022'
         hasil['waktu'] = '05:40:28 WIB'
         hasil['magnitudo'] = '5.0'
         hasil['kedalaman'] = '43 km'
