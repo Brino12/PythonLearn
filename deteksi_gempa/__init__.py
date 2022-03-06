@@ -1,4 +1,5 @@
 import bs4
+
 def ekstraksi_data():
 
     bs4.beautifulsoup("<p>some<b>bad<i>HTML")
