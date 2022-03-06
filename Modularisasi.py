@@ -7,13 +7,14 @@
 tidak berpotensi TSUNAMI
 """
 
+def ekstraksi_data():
 
     hasil = dict()
     hasil['tanggal'] = '06 Maret 2022'
     hasil['waktu'] = '05:40:28 WIB'
     hasil['magnitudo'] = '5.0'
     hasil['kedalaman'] = '43 km'
-    hasil['lokasi'] = {'LU' = 3.55, 'BT' = 126.10}
+    hasil['lokasi'] = {'LU': 3.55, 'BT': 126.10}
     hasil['potensi gempa'] = 'Tidak Berpotensi Tsunami'
 
     return hasil
@@ -29,5 +30,5 @@ def tampilkan_data(result):
 
 if __name__ == '__main__':
     print('Aplikasi Utama')
-    result = ekstrasi_data()
+    result = ekstraksi_data()
     tampilkan_data(result)
